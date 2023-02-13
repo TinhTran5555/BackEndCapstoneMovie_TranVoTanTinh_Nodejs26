@@ -1,0 +1,59 @@
+const {DataTypes, Sequelize} = require('sequelize');
+
+module.exports = (sequelize)=>{
+    return sequelize.define(
+        "Phim",{
+            maPhim:{
+                type:DataTypes.INTEGER,
+                primaryKey:true,
+                autoIncrement:true,
+                field:'ma_phim'
+            },
+            tenPhim:{
+                type:DataTypes.STRING,
+                field:'ten_phim'
+            },
+            trailer:{
+                type:DataTypes.STRING,
+                field:'trailer'
+            },
+            hinhAnh:{
+                type:DataTypes.STRING,
+                field:'hinh_anh'
+            },
+            moTa:{
+                type:DataTypes.STRING,
+                field:'mo_ta'
+            },
+            ngayKhoiChieu:{
+                type:DataTypes.DATE,
+                field:'ngay_khoi_chieu',
+                defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+            },
+            danhGia:{
+                type:DataTypes.INTEGER,
+                field:'danh_gia'
+            },
+            hot:{
+                type:DataTypes.BOOLEAN,
+                field:'hot',
+                defaultValue:false
+            }
+            ,
+            dangChieu:{
+                type:DataTypes.BOOLEAN,
+                field:'dang_chieu',
+                defaultValue:false
+            }
+            ,
+            sapChieu:{
+                type:DataTypes.BOOLEAN,
+                field:'sap_chieu',
+                defaultValue:true
+            }
+        },{
+            tableName:'Phim',
+            timestamps:false,
+        }
+    )
+}
