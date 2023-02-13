@@ -1,0 +1,3 @@
+tai_khoan,ho_ten,email,so_dt,mat_khau,role
+1,tinh,tinh@gmail.com,12345678,$2b$10$bOauYfVUIvRurfASteRkj.Xu2WngSqiswlm0y/Yen1eBexwuHrGCS,user
+2,tinh,abcd@gmail.com,12345678,$2b$10$2MlWA8t654XPxSBFACvHVONuS7SvlW9GayPaAfIPvsDydHTsnQq1i,admin
