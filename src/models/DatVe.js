@@ -19,10 +19,10 @@ module.exports = (sequelize) => {
             unique:false,
             field: 'ma_lich_chieu',
         },
-        maGhe: {
+        danhSachGhe: {
             type: DataTypes.INTEGER,
             unique:false,
-            field: 'ma_ghe'
+            field: 'danh_sach_ghe'
         }
     }, {
         tableName: 'DatVe',

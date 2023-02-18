@@ -27,7 +27,21 @@ const LayDanhSachPhongVe = () => {
         }
     };
 };
+const TaoLichChieu = () => {
+    return async (req, res, next) => {
+        try {
+            const data = req.body;
+            const lichChieu = await veService.TaoLichChieuService(data);
+            res.status(200).json(response(lichChieu));
+        } catch (error) {
+            console.log(error);
+            next(error);
+        }
+    };
+};
+
 module.exports = {
     DatVe,
-    LayDanhSachPhongVe
+    LayDanhSachPhongVe,
+    TaoLichChieu
 };

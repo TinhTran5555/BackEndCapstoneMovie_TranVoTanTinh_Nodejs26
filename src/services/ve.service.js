@@ -1,6 +1,6 @@
 const { literal, Op } = require('sequelize');
 const { AppError } = require('../helpers/error');
-const {  NguoiDung, LichChieu, Ghe} = require('../models');
+const {  NguoiDung, LichChieu, Ghe,DatVe, Phim,RapPhim} = require('../models');
 
 
 const DatVeService = async (user, maLichChieu, maGhe) => {
@@ -22,6 +22,26 @@ const DatVeService = async (user, maLichChieu, maGhe) => {
         if (!gheFound) {
           throw new AppError(404, "chair not found");
         }
+        const veFound = await DatVe.findOne({
+            where: {
+                maLichChieu: maLichChieu,
+                danhSachGhe: maGhe
+            }
+        });
+ 
+        if (veFound) {
+            throw new AppError(404, "ticket has been purchased");
+          }
+          const Check = await DatVe.findOne({
+            where: {
+                maLichChieu: maLichChieu,
+                taiKhoan: user.taiKhoan
+            }
+        });
+        if (Check) {
+            throw new AppError(404, "user has booked tickets at this theater");
+          }
+        
 
     await userFound.addNguoiDungLichChieu(maLichChieu, {
         through: {
@@ -41,10 +61,11 @@ const LayDanhSachPhongVeService = async (maLichChieu) => {
                 maLichChieu: maLichChieu
             },
             include: [{
-                association: "danhSachGheCuaLichChieu",
+                association: "DanhSachVeDaDat",
                 
             },{
-                association: "danhSachGheDaDat",
+                association: "LichTheoRap",
+                include: "danhSachGhe"
             }]
         });
      return lichChieuFound
@@ -53,7 +74,44 @@ const LayDanhSachPhongVeService = async (maLichChieu) => {
         throw error
     }
 };
+const TaoLichChieuService = async(data)=>{
+    try {
+        console.log(data);
+        const phimFound = await Phim.findByPk(data.maPhim)
+        if(!phimFound){
+            throw new AppError(401,"Film not found")
+        }
+        const rapFound = await RapPhim.findByPk(data.maRap)
+        if(!rapFound){
+            throw new AppError(401,"theater not found")
+        } 
+        if(!rapFound){
+            throw new AppError(401,"theater not found")
+        }
+        const lichChieuFound = await LichChieu.findOne({
+            where: {
+                maPhim:data.maPhim,
+            maRap:data.maRap,
+            }
+        })
+        if(lichChieuFound){
+            throw new AppError(401,"The showtime of the movie in this theater has been created")
+        }
+       
+        
+        const TaoLichChieu = await LichChieu.create({
+            maPhim:data.maPhim,
+            maRap:data.maRap,
+            ngayGioChieu:data.ngayGioChieu ? data.ngayGioChieu : literal('CURRENT_TIMESTAMP'),
+        })
+        return TaoLichChieu;
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     DatVeService,
-    LayDanhSachPhongVeService
+    LayDanhSachPhongVeService,
+    TaoLichChieuService
 };

@@ -39,7 +39,9 @@ v1.get('/rap/layThongTinCumRapTheoHeThong',rapController.LayThongTinCumRap());
 v1.get('/rap/layThongTinLichChieuTheoHeThong',rapController.LayThongTinLichChieuTheoHeThongRap());
 v1.get('/rap/LayThongTinLichChieuPhim',rapController.LayThongTinLichChieu());
 //Ve
-v1.post('/ve/DatVe',authorization, veController.DatVe())
-v1.get('/ve/LayDanhSachPhongVe', veController.LayDanhSachPhongVe())
+v1.post('/ve/DatVe',authorization, veController.DatVe());
+v1.get('/ve/LayDanhSachPhongVe', veController.LayDanhSachPhongVe());
+
+v1.post('/ve/TaoLichChieu',authorization,reqRole("admin"), veController.TaoLichChieu())
 
 module.exports = v1;

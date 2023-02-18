@@ -30,18 +30,16 @@ const HeThongRap = require("./HeThongRap")(sequelize);
 const Banner = require("./Banner")(sequelize);
 
 NguoiDung.belongsToMany(LichChieu,{ as: "NguoiDungLichChieu", through: DatVe, foreignKey:"taiKhoan"})
-LichChieu.belongsToMany(NguoiDung,{ as: "LichChieuNguoiDung", through: DatVe, foreignKey:"maLichChieu"})
+LichChieu.belongsToMany(NguoiDung,{ as: "DanhSachVeDaDat", through: DatVe, foreignKey:"maLichChieu"})
 
 Phim.belongsToMany(RapPhim,{ as: "PhimTheoRap", through: LichChieu, foreignKey:"maPhim"})
 RapPhim.belongsToMany(Phim,{ as: "PhimCuaRap", through: LichChieu, foreignKey:"maRap"})
 
+Ghe.belongsTo(RapPhim,{as:"GheRapPhim",foreignKey:"maRap"});
+RapPhim.hasMany(Ghe,{as:"danhSachGhe",foreignKey:"maRap"});
 
-// Ghe.belongsToMany(LichChieu,{as:"gheCuaLichChieu",through: RapPhim, foreignKey:"maRap"});
-// LichChieu.belongsToMany(Ghe,{as:"danhSachGheCuaLichChieu",through: RapPhim,foreignKey:"maRap"});
-
-
-// DatVe.belongsTo(LichChieu,{as:"gheDaDat",foreignKey:"maLichChieu"});
-// LichChieu.hasMany(DatVe,{as:"danhSachGheDaDat",foreignKey:"maLichChieu"});
+LichChieu.belongsTo(RapPhim,{as:"LichTheoRap",foreignKey:"maRap"});
+RapPhim.hasMany(LichChieu,{as:"DanhSachLichChieu",foreignKey:"maRap"});
 
 
 RapPhim.belongsTo(CumRap,{as:"rapPhim",foreignKey:"maCumRap"});
@@ -65,7 +63,9 @@ module.exports = {
     Banner,
     Phim,
     HeThongRap,
-    Ghe
+    Ghe,
+    DatVe,
+    RapPhim
     
 }
 
