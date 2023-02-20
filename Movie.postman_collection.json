@@ -1,0 +1,955 @@
+{
+	"info": {
+		"_postman_id": "438ef2db-5800-45c6-809a-b819b1b28f34",
+		"name": "Movie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24759482"
+	},
+	"item": [
+		{
+			"name": "CapstoneMovie",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"hoTen\": \"tinh\",\r\n    \"email\" : \"king@gmail.com\",\r\n    \"soDt\":\"12345678\",\r\n    \"matKhau\": \"1234\",\r\n    \"role\": \"admin\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/register",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"abcd@gmail.com\",\r\n    \"matKhau\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/login",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Phim",
+					"item": [
+						{
+							"name": "getBanner",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/banner",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"banner"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "layDanhSachPhimTheoNgay",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tenPhim\":\"fa\",\r\n    \"tuNgay\":\"2023-01-03\",\r\n\"denNgay\":\"2023-12-12\",\r\n\"soTrang\": \"0\",\r\n\"soPhanTuTrenTrang\":\"1\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/film/LayDanhSachPhimTheoNgay",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"film",
+										"LayDanhSachPhimTheoNgay"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LayDanhSachPhimPhanTrang",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tenPhim\":\"av\",\r\n\"soTrang\": \"0\",\r\n\"soPhanTuTrenTrang\":\"11\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/film/LayDanhSachPhimPhanTrang",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"film",
+										"LayDanhSachPhimPhanTrang"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "layDanhSachPhim",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tenPhim\":\"king\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/film",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"film"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "xoaPhim",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MywiZW1haWwiOiJraW5nQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5MzgwMiwiZXhwIjoxNjc2NzM3MDAyfQ.PJmxv6DlihyHAzkRF8BuGj3wIQUkY74hGf07PBWQcpM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/film/delete/:maPhim",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"film",
+										"delete",
+										":maPhim"
+									],
+									"variable": [
+										{
+											"key": "maPhim",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addFilm",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MiwiZW1haWwiOiJhYmNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5MjU3NSwiZXhwIjoxNjc2NzM1Nzc1fQ.Oxw83iCEBUOeJFsEZ1gaQ-h0plZJsgn8nPMmDbqDWmE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/ad/Desktop/Avater/desktop.jpg"
+										},
+										{
+											"key": "tenPhim",
+											"value": "asdas",
+											"type": "text"
+										},
+										{
+											"key": "trailer",
+											"value": "sadsa",
+											"type": "text"
+										},
+										{
+											"key": "moTa",
+											"value": "asdsadas",
+											"type": "text"
+										},
+										{
+											"key": "ngayKhoiChieu",
+											"value": "2023-03-01",
+											"type": "text"
+										},
+										{
+											"key": "danhGia",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "hot",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "dangChieu",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "sapChieu",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/film/add",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"film",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateFilm",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MiwiZW1haWwiOiJhYmNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5MjU3NSwiZXhwIjoxNjc2NzM1Nzc1fQ.Oxw83iCEBUOeJFsEZ1gaQ-h0plZJsgn8nPMmDbqDWmE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/ad/Desktop/Avater/desktop.jpg"
+										},
+										{
+											"key": "tenPhim",
+											"value": "king rio",
+											"type": "text"
+										},
+										{
+											"key": "trailer",
+											"value": "sadsa",
+											"type": "text"
+										},
+										{
+											"key": "moTa",
+											"value": "asdsadas",
+											"type": "text"
+										},
+										{
+											"key": "ngayKhoiChieu",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "danhGia",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "hot",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "dangChieu",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "sapChieu",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "maPhim",
+											"value": "7",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/film/update",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"film",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "rap",
+					"item": [
+						{
+							"name": "LayThongTinHeThongRap",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/rap?maHeThongRap=1",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"rap"
+									],
+									"query": [
+										{
+											"key": "maHeThongRap",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "layThongTinCumRapTheoHeThong",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/rap/layThongTinCumRapTheoHeThong?maHeThongRap=2",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"rap",
+										"layThongTinCumRapTheoHeThong"
+									],
+									"query": [
+										{
+											"key": "maHeThongRap",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "layLichChieuHeThongRap",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/rap/layThongTinLichChieuTheoHeThong?maHeThongRap=3",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"rap",
+										"layThongTinLichChieuTheoHeThong"
+									],
+									"query": [
+										{
+											"key": "maHeThongRap",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "layLichChieuPhim",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/rap/LayThongTinLichChieuPhim?maPhim=3",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"rap",
+										"LayThongTinLichChieuPhim"
+									],
+									"query": [
+										{
+											"key": "maPhim",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "LayDanhSachLoaiNguoiDung",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/LayDanhSachLoaiNguoiDung",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"LayDanhSachLoaiNguoiDung"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LayDanhSacNguoiDung",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/LayDanhSachNguoiDung?tuKhoa=",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"LayDanhSachNguoiDung"
+									],
+									"query": [
+										{
+											"key": "tuKhoa",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LayDanhSachNguoiDungPhanTrang",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"tuKhoa\":\"\",\r\n\"soTrang\": \"1\",\r\n\"soPhanTuTrenTrang\":\"2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/LayDanhSachNguoiDungPhanTrang",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"LayDanhSachNguoiDungPhanTrang"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ThongTinTaiKhoan",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MywiZW1haWwiOiJraW5nQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5MzgwMiwiZXhwIjoxNjc2NzM3MDAyfQ.PJmxv6DlihyHAzkRF8BuGj3wIQUkY74hGf07PBWQcpM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/ThongTinTaiKhoan",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"ThongTinTaiKhoan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ThongTinNguoiDung",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MSwiZW1haWwiOiJ0aW5oQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5NDAzOSwiZXhwIjoxNjc2NzM3MjM5fQ.UJzbrG7VMUmzCdTHLYwZJLeE5WN1MiFgDllBYdvC8S0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/ThongTinNguoiDung?taiKhoan=1",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"ThongTinNguoiDung"
+									],
+									"query": [
+										{
+											"key": "taiKhoan",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ThemNguoiDung",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MiwiZW1haWwiOiJhYmNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5NDA3NSwiZXhwIjoxNjc2NzM3Mjc1fQ.nJEo41_N4yxb1Rbu0kGqHXpzDaqBZn9SB3j4n0YUHwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"hoTen\": \"rio\",\r\n    \"email\" : \"1111@gmail.com\",\r\n    \"soDt\":\"12345678\",\r\n    \"matKhau\": \"1234\",\r\n    \"role\": \"user\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/ThemNguoiDung",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"ThemNguoiDung"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XoaNguoiDung",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MiwiZW1haWwiOiJhYmNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5NDA3NSwiZXhwIjoxNjc2NzM3Mjc1fQ.nJEo41_N4yxb1Rbu0kGqHXpzDaqBZn9SB3j4n0YUHwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/XoaNguoiDung/:taiKhoan",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"XoaNguoiDung",
+										":taiKhoan"
+									],
+									"variable": [
+										{
+											"key": "taiKhoan",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CapNhatThongTinNguoiDung",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MiwiZW1haWwiOiJhYmNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5NDA3NSwiZXhwIjoxNjc2NzM3Mjc1fQ.nJEo41_N4yxb1Rbu0kGqHXpzDaqBZn9SB3j4n0YUHwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"hoTen\": \"tinhtran\",\r\n    \"email\" : \"king1@gmail.com\",\r\n    \"soDt\":\"0000\",\r\n    \"matKhau\": \"1234\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/CapNhatThongTinNguoiDung/:taiKhoan",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"CapNhatThongTinNguoiDung",
+										":taiKhoan"
+									],
+									"variable": [
+										{
+											"key": "taiKhoan",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DoiMatKhau",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MywiZW1haWwiOiJhYTExQGdtYWlsLmNvbSIsImlhdCI6MTY3NjA4MTc2NiwiZXhwIjoxNjc2MTI0OTY2fQ.fONciqmGbbkG57z-69Ue8-iUt-R3DlEUqml5BWdbEA0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \r\n  \"taiKhoan\": \"3\",\r\n  \"matKhauCu\":\"123\",\r\n  \"matKhauMoi\": \"1234\",\r\n  \"matKhauXacNhan\":\"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/user/DoiMatKhau",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"user",
+										"DoiMatKhau"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ve",
+					"item": [
+						{
+							"name": "DatVe",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MiwiZW1haWwiOiJhYmNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY4NzI3MCwiZXhwIjoxNjc2NzMwNDcwfQ.QYehAmLhSNlqMNhA3B7ri2JfOZXYjZ1MvEqmjBvI3Ow",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"maLichChieu\": \"3\",\r\n    \"maGhe\": \"1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/ve/DatVe",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"ve",
+										"DatVe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LayDanhSachPhongVe",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:4000/movie/v1/ve/LayDanhSachPhongVe?maLichChieu=2",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"ve",
+										"LayDanhSachPhongVe"
+									],
+									"query": [
+										{
+											"key": "maLichChieu",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TaoLichChieu",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlLaG9hbiI6MiwiZW1haWwiOiJhYmNkQGdtYWlsLmNvbSIsImlhdCI6MTY3NjY5MjU3NSwiZXhwIjoxNjc2NzM1Nzc1fQ.Oxw83iCEBUOeJFsEZ1gaQ-h0plZJsgn8nPMmDbqDWmE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"maRap\": 3,\r\n    \"maPhim\": 2,\r\n    \"ngayGioChieu\": \"2023-02-03\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:4000/movie/v1/ve/TaoLichChieu",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"movie",
+										"v1",
+										"ve",
+										"TaoLichChieu"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
